@@ -18,4 +18,4 @@ class NoaChat(object):
     def noachat_ws_recv(self, args):
         while True:
             result = self.ws.recv()
-            self.nvim.command('echo "{}"'.result)
+            self.nvim.call('noachat#insertText', result)
