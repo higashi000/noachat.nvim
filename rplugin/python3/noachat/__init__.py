@@ -10,11 +10,11 @@ class NoaChat(object):
     def __del__(self):
         self.ws.close()
 
-    @pynvim.function('noachat#createconn', sync = True)
+    @pynvim.function('NoachatCreateconn', sync = True)
     def noachat_create_conn(self, args):
-        self.ws = websocket.create_connection("{}".args[0])
+        self.ws = websocket.create_connection("{}".format(args[0]))
 
-    @pynvim.function('noachat#wsrecv', sync = False)
+    @pynvim.function('NoachatWsrecv', sync = False)
     def noachat_ws_recv(self, args):
         while True:
             result = self.ws.recv()
