@@ -27,4 +27,4 @@ Plug 'higashi000/noachat.nvim'
 ```
 
 ## Pictures
-[noachat picture](https://github.com/higashi000/sarahck.vim)
+![noachat picture](https://github.com/higashi000/noachat.nvim/blob/master/img/noachat.gif)
