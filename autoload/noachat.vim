@@ -7,10 +7,10 @@ function! noachat#sendMsg() abort
    let l:text = input('Post Text :')
 
    let l:sendText = ''
-   if !exists('g:noachatUserName')
-      let l:sendText = l:sendText.'noname:'.l:text
+   if !exists("g:noachatUserName")
+      let l:sendText = l:sendText.'noname: '.l:text
    else
-      let l:sendText = l:sendText.g:noachatUserName.':'.l:text
+      let l:sendText = l:sendText.g:noachatUserName.': '.l:text
    endif
 
    let l:data =
