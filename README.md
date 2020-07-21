@@ -26,5 +26,16 @@ If you using vim-plug.<br>
 Plug 'higashi000/noachat.nvim'
 ```
 
+## Usage
+Start Chat<br>
+```
+:StartNoaChat
+```
+
+Send Message<br>
+```
+:NoaChatPostMsg
+```
+
 ## Pictures
 ![noachat picture](https://github.com/higashi000/noachat.nvim/blob/master/img/noachat.gif)
