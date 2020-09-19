@@ -7,10 +7,10 @@ function! noachat#sendMsg() abort
    let l:text = input('Post Text :')
 
    let l:sendText = ''
-   if !exists("g:noachatUserName")
+   if !exists("g:noachat#UserName")
       let l:sendText = l:sendText.'noname: '.l:text
    else
-      let l:sendText = l:sendText.g:noachatUserName.': '.l:text
+      let l:sendText = l:sendText.g:noachat#UserName.': '.l:text
    endif
 
    let l:data =
@@ -18,7 +18,7 @@ function! noachat#sendMsg() abort
       \ .'\"text\":\"'.l:sendText.'\"'
    \ .'}"'
 
-   let l:sendCmd = 'curl https'.g:noachatServerURL.'/send '
+   let l:sendCmd = 'curl https'.g:noachat#ServerURL.'/send '
       \ .'-X POST -H "Content-Type: application/json" '
       \ .'-d '.l:data
 

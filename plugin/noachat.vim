@@ -6,10 +6,10 @@ let g:loaded_noachat = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-let g:noachatServerURL = '://noa.higashi.dev'
+let g:noachat#ServerURL = '://noa.higashi.dev'
 
 function! noachat#Start() abort
-   let l:connURL = 'wss'.g:noachatServerURL.'/ws'
+   let l:connURL = 'wss'.g:noachat#ServerURL.'/ws'
    call NoachatCreateconn(l:connURL)
    call NoachatWsrecv()
 endfunction
