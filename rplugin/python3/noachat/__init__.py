@@ -19,3 +19,7 @@ class NoaChat(object):
         while True:
             result = self.ws.recv()
             self.nvim.call('noachat#insertText', result)
+
+    @pynvim.function('NoachatClose', sync = False)
+    def noachat_ws_close(self, args):
+        self.ws.close()
