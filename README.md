@@ -27,15 +27,30 @@ Plug 'higashi000/noachat.nvim'
 ```
 
 ## Usage
-Start Chat<br>
+### Key map
+Please write this key map in your vimrc.<br>
+```
+map nl <Plug>(noachat_leave)
+map ns <Plug>(noachat_start)
+```
+This settings is example, and key map is freedom!<br>
+Please choice your favorite key map.<br>
+
+### Connect and Start Chat
 ```
 :StartNoaChat
 ```
 
-Send Message<br>
+### Send Message
 ```
 :NoaChatPostMsg
 ```
+
+### Leave Chat Room
+Please Input key map, set to `<Plug>(noachat_leave)`.
+
+### Reconnect Chat Room
+Please Input key map, set to `<Plug>(noachat_start)`.
 
 ## Pictures
 ![noachat picture](https://github.com/higashi000/noachat.nvim/blob/master/img/noachat.gif)
