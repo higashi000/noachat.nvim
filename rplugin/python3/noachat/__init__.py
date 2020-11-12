@@ -18,7 +18,7 @@ class NoaChat(object):
     def noachat_ws_recv(self, args):
         while self.nvim.eval('g:noachat#ws'):
             self.nvim.vars['g:noachat#ws'] = \
-                self.nvim.call('noachat#isNoachat')
+                    self.nvim.call('noachat#isNoachat')
 
             result = self.ws.recv()
             self.nvim.call('noachat#insertText', result)
