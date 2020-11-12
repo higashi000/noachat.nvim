@@ -30,8 +30,11 @@ Plug 'higashi000/noachat.nvim'
 ### Key map
 Please write this key map in your vimrc.<br>
 ```
-map nl <Plug>(noachat_leave)
-map ns <Plug>(noachat_start)
+autocmd FileType noachat call s:noachat_settings()
+function! s:noachat_settings() abort
+    map <silent> ns <PLug>(noachat_start)
+    map <silent> nl <Plug>(noachat_leave)
+endfunction
 ```
 This settings is example, and key map is freedom!<br>
 Please choice your favorite key map.<br>
