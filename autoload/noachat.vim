@@ -1,5 +1,5 @@
 function! noachat#insertText(text) abort
-    if !noachat#ws
+    if !g:noachat#ws
         return
     endif
 
@@ -8,25 +8,25 @@ function! noachat#insertText(text) abort
 endfunction
 
 function! noachat#sendMsg() abort
-   let l:text = input('Post Text :')
+    let l:text = input('Post Text :')
 
-   let l:sendText = ''
-   if !exists("g:noachat#UserName") || g:noachat#UserName == ''
-      let l:sendText = l:sendText.'noname: '.l:text
-   else
-      let l:sendText = l:sendText.g:noachat#UserName.': '.l:text
-   endif
+    let l:sendText = ''
+    if !exists("g:noachat#UserName") || g:noachat#UserName == ''
+        let l:sendText = l:sendText.'noname: '.l:text
+    else
+        let l:sendText = l:sendText.g:noachat#UserName.': '.l:text
+    endif
 
-   let l:data =
-   \ '"{'
-      \ .'\"text\":\"'.l:sendText.'\"'
-   \ .'}"'
+    let l:data =
+                \ '"{'
+                \ .'\"text\":\"'.l:sendText.'\"'
+                \ .'}"'
 
-   let l:sendCmd = 'curl http'.g:noachat#ServerURL.'/send '
-      \ .'-X POST -H "Content-Type: application/json" '
-      \ .'-d '.l:data
+    let l:sendCmd = 'curl '.g:noachat#SendReqURL.'/send '
+                \ .'-X POST -H "Content-Type: application/json" '
+                \ .'-d '.l:data
 
-   call system(l:sendCmd)
+    call system(l:sendCmd)
 endfunction
 
 
@@ -46,13 +46,13 @@ function! noachat#leaveChat() abort
     endif
 
     let l:data =
-    \ '"{'
-        \ .'\"text\":\"'.g:noachat#UserName.': leave\"'
-    \ .'}"'
+                \ '"{'
+                \ .'\"text\":\"'.g:noachat#UserName.': leave\"'
+                \ .'}"'
 
-    let l:sendCmd = 'curl http'.g:noachat#ServerURL.'/send '
-       \ .'-X POST -H "Content-Type: application/json" '
-    \ .'-d '.l:data
+    let l:sendCmd = 'curl '.g:noachat#SendReqURL.'/send '
+                \ .'-X POST -H "Content-Type: application/json" '
+                \ .'-d '.l:data
 
     call system(l:sendCmd)
 endfunction
