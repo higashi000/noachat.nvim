@@ -55,4 +55,16 @@ function! noachat#leaveChat() abort
                 \ .'-d '.l:data
 
     call system(l:sendCmd)
+
+    if noachat#isNoachat()
+        call execute(":q!")
+    endif
+endfunction
+
+function! noachat#startChat() abort
+    if !noachat#isNoachat()
+        call execute(":e room.noachat")
+    endif
+
+    call NoachatWsrecv()
 endfunction

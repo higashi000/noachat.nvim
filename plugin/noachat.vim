@@ -9,20 +9,25 @@ set cpo&vim
 au BufRead,BufNewFile *.noachat setfiletype noachat
 
 noremap <Plug>(noachat_leave) :<C-u>call noachat#leaveChat()<CR>
-noremap <Plug>(noachat_start) :<C-u>call NoachatWsrecv()<CR>
+noremap <Plug>(noachat_start) :<C-u>call noachat#startChat()<CR>
 
-let g:noachat#ServerURL = '://localhost:5000'
-let g:noachat#https = v:false
-let g:noachat#SendReqURL = g:noachat#https ? 'https'.g:noachat#ServerURL : 'http'.g:noachat#ServerURL
-let g:noachat#WsURL = g:noachat#https ? 'wss'.g:noachat#ServerURL : 'ws'.g:noachat#ServerURL
+if !exists('g:noachat#ServerURL')
+    let g:noachat#ServerURL = 'localhost:5000' " ベースになる url
+endif
+
+if !exists('g:noachat#https')
+    let g:noachat#https = v:false
+endif
+
+let g:noachat#SendReqURL = g:noachat#https ? 'https://'.g:noachat#ServerURL : 'http://'.g:noachat#ServerURL
+let g:noachat#WsURL = g:noachat#https ? 'wss://'.g:noachat#ServerURL : 'ws://'.g:noachat#ServerURL
 let g:noachat#ws = v:false
-let g:noachat#UserName = ''
 
 function! noachat#Start() abort
     let l:connURL = g:noachat#WsURL.'/ws'
-    let g:noachat#ws = noachat#isNoachat()
     call NoachatCreateconn(l:connURL)
-    call NoachatWsrecv()
+    call noachat#startChat()
+    let g:noachat#ws = noachat#isNoachat()
 endfunction
 
 command! StartNoaChat call noachat#Start()
