@@ -27,7 +27,28 @@ Plug 'higashi000/noachat.nvim'
 ```
 
 ## Usage
-### Key map
+### Server
+Install chat server to please execution this command.<br>
+```
+$ go get -u github.com/higashi000/noachat
+```
+
+After, passing PATH to $GOPATH/bin and run this command.<br>
+```
+$ noachat
+```
+
+If you will use official server.<br>
+Don't install chat server.<br>
+
+### Web Browser Client
+Run chat server.<br>
+After access to [localhost:5000](http://localhost:5000).<br>
+
+If you will use official server, please access to [https://noa.higashi.dev](https://noa.higashi.dev)
+
+### Neovim Client
+#### Key map
 Please write this key map in your vimrc.<br>
 ```
 autocmd FileType noachat call s:noachat_settings()
@@ -39,20 +60,29 @@ endfunction
 This settings is example, and key map is freedom!<br>
 Please choice your favorite key map.<br>
 
-### Connect and Start Chat
+#### Connection Settings
+If you will use official server, please write this settings in your vimrc.<br>
+```
+let g:noachat#ServerURL = 'noa.higashi.dev'
+let g:noachat#https = v:true
+```
+
+If you will use local server, there is nothing to be.<br>
+
+#### Connect and Start Chat
 ```
 :StartNoaChat
 ```
 
-### Send Message
+#### Send Message
 ```
 :NoaChatPostMsg
 ```
 
-### Leave Chat Room
+#### Leave Chat Room
 Please Input key map, set to `<Plug>(noachat_leave)`.
 
-### Reconnect Chat Room
+#### Reconnect Chat Room
 Please Input key map, set to `<Plug>(noachat_start)`.
 
 ## Pictures
