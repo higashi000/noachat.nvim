@@ -14,9 +14,6 @@ jobs:
                   neovim: true
                   version: nightly
 
-                  #            - name: Install noachat.nvim
-                  #              run: git clone https://github.com/higashi000/noachat.nvim ~/
-
             - name: Set Up vimrc
               run: cp ./vimrc_test ~/.vimrc
 
