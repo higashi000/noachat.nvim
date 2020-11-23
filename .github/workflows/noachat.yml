@@ -1,0 +1,24 @@
+name: Test noachat.nvim
+on: push
+
+jobs:
+    test:
+        name: noachat.nvim test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+
+            - name: Set Up nightly Neovim
+              uses: rhysd/action-setup-vim@v1
+              with:
+                  neovim: true
+                  version: nightly
+
+            - name: Install noachat.nvim
+              run: git clone https://github.com/higashi000/noachat.nvim ~/
+
+            - name: Set Up vimrc
+              run: cp ./vimrc_test ~/.vimrc
+
+            - name: run noachat.nvim test
+              run: nvim +":call noachat#test#run()"
