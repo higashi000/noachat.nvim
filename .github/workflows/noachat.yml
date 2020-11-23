@@ -15,7 +15,7 @@ jobs:
                   version: nightly
 
             - name: Set Up vimrc
-              run: cp ./vimrc_test ~/.vimrc
+              run: cp ./vimrc_test ~/.config/nvim/init.vim
 
             - name: run noachat.nvim test
               run: nvim +":call noachat#test#run()"
