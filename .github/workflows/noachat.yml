@@ -20,5 +20,8 @@ jobs:
             - name: check vimrc
               run: cat ~/.config/nvim/init.vim
 
+            - name: check root directory
+              run: ls ~/
+
             - name: run noachat.nvim test
               run: nvim +":call noachat#test#run()"
