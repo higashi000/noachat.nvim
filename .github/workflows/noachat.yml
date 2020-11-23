@@ -14,14 +14,14 @@ jobs:
                   neovim: true
                   version: nightly
 
+            - name: install noachat.nvim
+              run: cd ~/ && git clone https://github.com/higashi000/noachat.nvim
+
             - name: Set Up init.vim
               run: mkdir ~/.config/nvim && cp ./vimrc_test ~/.config/nvim/init.vim
 
             - name: check vimrc
               run: cat ~/.config/nvim/init.vim
-
-            - name: check root directory
-              run: ls ~/
 
             - name: run noachat.nvim test
               run: nvim +":call noachat#test#run()"
