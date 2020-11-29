@@ -7,6 +7,7 @@ function! noachat#test#run()
     let v:errors = []
 
     call noachat#test#test_filetype#run()
+    call noachat#test#test_insertText#run()
 
     if len(v:errors) > 0
         echo v:errors
