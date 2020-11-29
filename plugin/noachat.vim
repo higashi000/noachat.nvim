@@ -12,7 +12,7 @@ noremap <Plug>(noachat_leave) :<C-u>call noachat#leaveChat()<CR>
 noremap <Plug>(noachat_start) :<C-u>call noachat#startChat()<CR>
 
 if !exists('g:noachat#ServerURL')
-    let g:noachat#ServerURL = 'localhost:5000' " ベースになる url
+    let g:noachat#ServerURL = 'localhost:5000'
 endif
 
 if !exists('g:noachat#https')
