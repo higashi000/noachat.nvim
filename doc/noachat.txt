@@ -1,0 +1,60 @@
+*noachat.txt* Neovim chat plugin.
+
+Version: 1.0
+Author:  higashi <higashi.ict@gmail.com>
+License: MIT
+
+===================================================
+CONTENTS				*noachat-contents*
+
+Introduction           |noachat-introduction|
+Usage                  |noachat-usage|
+Install                |noachat-install|
+Config Example         |noachat-config-example|
+
+===================================================
+Introduction            *noachat-introduction*
+
+*noachat* is Neovim chat plugin.
+
+===================================================
+Usage                   *noachat-usage*
+
+Please install this plugin.
+After, please execute *:StartNoachat* command.
+If you want to send message, please execute *:NoaChatPostMsg* command.
+
+===================================================
+Install                 *noachat-install*
+
+*noachat.nvim* is require websocket-client and pynvim.
+Please install these library, from this command.
+* Install pynvim and websocket-client >
+$ pip install pynvim websocket-client
+<
+
+If you using dein.vim.
+* Install Example dein >
+call dein#add('higashi000/noachat.nvim')
+<
+
+If you using vim-plug.
+* Install Example vim-plug >
+Plug 'higashi000/noachat.nvim'
+<
+
+===================================================
+Config Example          *noachat-config-example*
+
+* Key Config >
+autocmd FileType noachat call s:noachat_settings()
+function! s:noachat_settings() abort
+    map <silent> ns <PLug>(noachat_start)
+    map <silent> nl <Plug>(noachat_leave)
+endfunction
+<
+
+* Server Settings >
+let g:noachat#ServerURL = 'noa.higashi.dev'
+let g:noachat#https = v:true
+<
