@@ -10,6 +10,10 @@ endfunction
 function! noachat#sendMsg() abort
     let l:text = input('Post Text :')
 
+    if l:text == ''
+        return
+    endif
+
     let l:sendText = ''
     if !exists("g:noachat#UserName") || g:noachat#UserName == ''
         let l:sendText = l:sendText.'noname: '.l:text
