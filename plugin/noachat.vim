@@ -22,10 +22,17 @@ endif
 let g:noachat#SendReqURL = g:noachat#https ? 'https://'.g:noachat#ServerURL : 'http://'.g:noachat#ServerURL
 let g:noachat#WsURL = g:noachat#https ? 'wss://'.g:noachat#ServerURL : 'ws://'.g:noachat#ServerURL
 let g:noachat#ws = v:false
+let g:noachat#isConnect = v:false
 
 function! noachat#Start() abort
-    let l:connURL = g:noachat#WsURL.'/ws'
+    if g:noachat#isConnect
+        echo 'already done connect to server'
+        return
+    endif
+    let g:noachat#roomid = input('room id > ')
+    let l:connURL = g:noachat#WsURL . '/channel/' . g:noachat#roomid . '/ws'
     call NoachatCreateconn(l:connURL)
+    let g:noachat#isConnect = v:true
     call noachat#startChat()
     let g:noachat#ws = noachat#isNoachat()
 endfunction

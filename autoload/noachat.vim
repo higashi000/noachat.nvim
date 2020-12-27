@@ -22,7 +22,7 @@ function! noachat#sendMsg() abort
                 \ .'\"text\":\"'.l:sendText.'\"'
                 \ .'}"'
 
-    let l:sendCmd = 'curl '.g:noachat#SendReqURL.'/send '
+    let l:sendCmd = 'curl '.g:noachat#SendReqURL.'/send/' . g:noachat#roomid . ' '
                 \ .'-X POST -H "Content-Type: application/json" '
                 \ .'-d '.l:data
 
